@@ -10,5 +10,9 @@ module.exports = {
     container: {
       padding: '2rem',
     },
+    fontFamily: {
+      'sans': ['Montserrat', 'sans-serif'],
+      'serif': ['Cormorant Garamond', 'serif'],
+    }
   },
 }
