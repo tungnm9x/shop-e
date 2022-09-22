@@ -1,7 +1,7 @@
 <nmt-header></nmt-header>
 <nmt-carousel [items]="carouselItems"></nmt-carousel>
 <ng-container [ngTemplateOutlet]="intro1"></ng-container>
-<ng-container [ngTemplateOutlet]="intro"></ng-container>`
+<ng-container [ngTemplateOutlet]="intro"></ng-container>
 <ng-container [ngTemplateOutlet]="trendingProducts"></ng-container>
 <ng-container [ngTemplateOutlet]="video"></ng-container>
 <ng-container [ngTemplateOutlet]="newProducts"></ng-container>
@@ -13,10 +13,10 @@
   <!-- Trending Products -->
   <section>
     <div class="bg-white">
-      <div class="container mx-auto py-28">
+      <div class="container mx-auto py-20 lg:py-28">
         <div class="flex justify-center mb-12">
-          <h2 class="text-4xl tracking-tight text-gray-900 font-semibold">
-            Dich vụ nổi bật
+          <h2 class="text-4xl tracking-tight font-bold font-serif">
+            Dich Vụ Nổi Bật
           </h2>
         </div>
 
@@ -26,8 +26,7 @@
           <ng-container *ngFor="let i of trendingProducts$ | async">
             <div class="group cursor-pointer">
               <div
-                class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none"
-                style="height: 462px"
+                class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 group-hover:opacity-75 lg:aspect-none h-96"
               >
                 <img
                   [src]="i.imageUrl"
@@ -35,7 +34,7 @@
                   class="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
               </div>
-              <div class="mt-5 text-gray-700 text-base font-medium">
+              <div class="mt-5 text-base font-medium">
                 {{ i.name }}
               </div>
             </div>
@@ -71,92 +70,13 @@
   <!-- END Products -->
 </ng-template>
 
-<ng-template #colections>
-  <section>
-    <div class="bg-gray-100">
-      <div class="container mx-auto">
-        <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
-          <h2 class="text-2xl font-bold text-gray-900">Collections</h2>
-
-          <div
-            class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0"
-          >
-            <div class="group relative">
-              <div
-                class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1"
-              >
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg"
-                  alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
-                  class="h-full w-full object-cover object-center"
-                />
-              </div>
-              <h3 class="mt-6 text-sm text-gray-500">
-                <a href="#">
-                  <span class="absolute inset-0"></span>
-                  Desk and Office
-                </a>
-              </h3>
-              <p class="text-base font-semibold text-gray-900">
-                Work from home accessories
-              </p>
-            </div>
-
-            <div class="group relative">
-              <div
-                class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1"
-              >
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg"
-                  alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."
-                  class="h-full w-full object-cover object-center"
-                />
-              </div>
-              <h3 class="mt-6 text-sm text-gray-500">
-                <a href="#">
-                  <span class="absolute inset-0"></span>
-                  Self-Improvement
-                </a>
-              </h3>
-              <p class="text-base font-semibold text-gray-900">
-                Journals and note-taking
-              </p>
-            </div>
-
-            <div class="group relative">
-              <div
-                class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1"
-              >
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg"
-                  alt="Collection of four insulated travel bottles on wooden shelf."
-                  class="h-full w-full object-cover object-center"
-                />
-              </div>
-              <h3 class="mt-6 text-sm text-gray-500">
-                <a href="#">
-                  <span class="absolute inset-0"></span>
-                  Travel
-                </a>
-              </h3>
-              <p class="text-base font-semibold text-gray-900">
-                Daily commute essentials
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</ng-template>
-
 <ng-template #newProducts>
   <!-- Trending Products -->
   <section>
     <div class="bg-white">
-      <div class="container mx-auto py-28">
+      <div class="container mx-auto py-20 lg:py-28">
         <div class="flex justify-center mb-12">
-          <h2 class="text-4xl tracking-tight text-gray-900 font-semibold">
+          <h2 class="text-4xl tracking-tight font-bold font-serif">
             Sản Phẩm Mới
           </h2>
         </div>
@@ -166,8 +86,7 @@
           <ng-container *ngFor="let i of newProducts$ | async">
             <div class="group product-item cursor-pointer p-6">
               <div
-                class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none"
-                style="height: 462px"
+                class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 group-hover:opacity-75 lg:aspect-none h-96"
               >
                 <img
                   [src]="i.imageUrl"
@@ -218,15 +137,17 @@
 <ng-template #intro>
   <section>
     <div style="background-color: #f2f5f0">
-      <div class="container mx-auto py-28">
-        <div class="grid grid-cols-3">
+      <div class="container mx-auto py-20 lg:py-28">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-6">
           <div class="text-center">
             <img
               class="mx-auto mb-6"
               src="./assets/icons/svgs/face.svg"
               alt="img"
             />
-            <div class="text-center text-3xl mb-5">Anti-Aging Facial</div>
+            <div class="text-center text-2xl md:text-3xl mb-5 font-serif">
+              Anti-Aging Facial
+            </div>
             <div class="text-sm">
               Contrary to popular belief Lorem Ipsum or random text It has roots
               in
@@ -239,7 +160,9 @@
               src="./assets/icons/svgs/hydra.svg"
               alt="img"
             />
-            <div class="text-center text-3xl mb-5">Hydra Facial</div>
+            <div class="text-center text-2xl md:text-3xl mb-5 font-serif">
+              Hydra Facial
+            </div>
             <div class="text-sm">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum is simply dummy text of the printing and
@@ -253,7 +176,9 @@
               src="./assets/icons/svgs/skin.svg"
               alt="img"
             />
-            <div class="text-center text-3xl mb-5">Skin Tightening</div>
+            <div class="text-center text-2xl md:text-3xl mb-5 font-serif">
+              Skin Tightening
+            </div>
             <div class="text-sm">
               It is a long established fact reader will be distracted by the
               readable
@@ -268,17 +193,18 @@
 <ng-template #intro1>
   <section>
     <div class="bg-white">
-      <div class="container mx-auto py-32">
-        <div class="grid grid-cols-2">
+      <div class="container mx-auto py-20 lg:py-32">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-y-10 gap-x-10 items-center"
+        >
           <img
-            class="pr-10"
             src="
           https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/about-img.jpg"
             alt="img"
           />
           <div>
             <div class="mb-7 text-sm">MORE ABOUT</div>
-            <div class="text-5xl mb-8">
+            <div class="text-3xl md:text-4xl lg:text-6xl mb-8">
               Just Find Skin Care That Works For You
             </div>
             <div class="mb-8 text-sm">
@@ -439,8 +365,8 @@
 <ng-template #comments>
   <section>
     <div style="background-color: #f2f5f0">
-      <div class="container mx-auto py-20">
-        <div class="text-center px-56">
+      <div class="container mx-auto py-14 lg:py-20">
+        <div class="text-center px-9 lg:px-56">
           <img
             class="mx-auto mb-8"
             src="./assets/icons/svgs/comment.svg"
@@ -463,20 +389,20 @@
 <ng-template #popularPost>
   <section>
     <div class="bg-white">
-      <div class="container mx-auto py-28">
+      <div class="container mx-auto py-20 lg:py-28">
         <div class="flex justify-center mb-12">
-          <h2 class="text-4xl tracking-tight text-gray-900 font-semibold">
+          <h2 class="text-4xl tracking-tight font-bold font-serif">
             Bài Viết Nổi Bật
           </h2>
         </div>
+
         <div
           class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
         >
           <ng-container *ngFor="let i of popularPost$ | async">
             <div class="group cursor-pointer text-center">
               <div
-                class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none"
-                style="height: 462px"
+                class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 group-hover:opacity-75 lg:aspect-none h-96"
               >
                 <img
                   [src]="i.imageUrl"
@@ -523,14 +449,14 @@
   </section>
 </ng-template>
 
-<nmt-modal [(isVisible)]="showVideo" [size]="'xl'" [showClose]="false">
+<nmt-modal [(isVisible)]="showVideo" [showClose]="true">
   <iframe
-    src="https://www.youtube.com/embed/rHKCWKZA6RI"
-    title="Những Bản Piano Cover Cảm Xúc Nhất Của An Coong || An Coong 2020"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen="1"
     width="100%"
     height="625"
+    src="https://www.youtube.com/embed/cusuRMCoSAw"
+    title="Gói dịch vụ massage"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
 </nmt-modal>
