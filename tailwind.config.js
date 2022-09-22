@@ -5,5 +5,10 @@ module.exports = {
   ],
   plugins: [
     require('tw-elements/dist/plugin')
-  ]
+  ],
+  theme: {
+    container: {
+      padding: '2rem',
+    },
+  },
 }

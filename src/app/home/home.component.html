@@ -1,332 +1,536 @@
 <nmt-header></nmt-header>
+<nmt-carousel [items]="carouselItems"></nmt-carousel>
+<ng-container [ngTemplateOutlet]="intro1"></ng-container>
+<ng-container [ngTemplateOutlet]="intro"></ng-container>`
+<ng-container [ngTemplateOutlet]="trendingProducts"></ng-container>
+<ng-container [ngTemplateOutlet]="video"></ng-container>
+<ng-container [ngTemplateOutlet]="newProducts"></ng-container>
+<ng-container [ngTemplateOutlet]="comments"></ng-container>
+<ng-container [ngTemplateOutlet]="popularPost"></ng-container>
+<nmt-footer></nmt-footer>
 
-<!-- CAROUSEL -->
-<section>
-  <nmt-carousel [items]="carouselItems"></nmt-carousel>
-</section>
-<!-- END CAROUSEL -->
-
-<section>
-  <div class="container mx-auto">
-    <div class="grid grid-cols-2 py-12">
-      <div class="text-center">
-        <div class="text-2xl font-semibold">G10</div>
-        <div class="text-sm font-normal">
-          Giá dùng thử <br />giảm 10% đơn đầu tiên
+<ng-template #trendingProducts>
+  <!-- Trending Products -->
+  <section>
+    <div class="bg-white">
+      <div class="container mx-auto py-28">
+        <div class="flex justify-center mb-12">
+          <h2 class="text-4xl tracking-tight text-gray-900 font-semibold">
+            Dich vụ nổi bật
+          </h2>
         </div>
-      </div>
-      <div class="text-center">
-        <div class="text-2xl font-semibold">NEW</div>
-        <div class="text-sm font-normal">Free Ship <br />đơn hàng từ 500K</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Trending Products -->
-<section>
-  <div class="bg-white">
-    <div class="container mx-auto py-16">
-      <div class="flex justify-between">
-        <h2 class="text-2xl font-bold tracking-tight text-gray-900">
-          Dich vụ nổi bật
-        </h2>
-        <a class="font-medium text-indigo-600 hover:text-indigo-500">
-          See everything
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6 inline-block"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-            />
-          </svg>
-        </a>
-      </div>
-
-      <div
-        class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
-      >
-        <ng-container *ngFor="let i of trendingProducts$ | async">
-          <div class="group">
-            <div
-              class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none"
-              style="min-height: 480px"
-            >
-              <img
-                [src]="i.imageUrl"
-                alt="img"
-                class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-              />
-            </div>
-            <h3 class="mt-4 text-sm text-gray-700">{{ i.name }}</h3>
-            <p class="text-sm font-medium text-gray-900">
-              {{ i.price | currency: "VND" }}
-            </p>
-          </div>
-        </ng-container>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- END Products -->
-
-<!-- Collections -->
-<section>
-  <div class="bg-gray-100">
-    <div class="container mx-auto">
-      <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
-        <h2 class="text-2xl font-bold text-gray-900">Collections</h2>
 
         <div
-          class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0"
+          class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
         >
-          <div class="group relative">
-            <div
-              class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1"
-            >
-              <img
-                src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg"
-                alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
-                class="h-full w-full object-cover object-center"
-              />
+          <ng-container *ngFor="let i of trendingProducts$ | async">
+            <div class="group cursor-pointer">
+              <div
+                class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none"
+                style="height: 462px"
+              >
+                <img
+                  [src]="i.imageUrl"
+                  alt="img"
+                  class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                />
+              </div>
+              <div class="mt-5 text-gray-700 text-base font-medium">
+                {{ i.name }}
+              </div>
             </div>
-            <h3 class="mt-6 text-sm text-gray-500">
-              <a href="#">
-                <span class="absolute inset-0"></span>
-                Desk and Office
-              </a>
-            </h3>
-            <p class="text-base font-semibold text-gray-900">
-              Work from home accessories
-            </p>
-          </div>
+          </ng-container>
+        </div>
 
-          <div class="group relative">
-            <div
-              class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1"
-            >
-              <img
-                src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg"
-                alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."
-                class="h-full w-full object-cover object-center"
-              />
-            </div>
-            <h3 class="mt-6 text-sm text-gray-500">
-              <a href="#">
-                <span class="absolute inset-0"></span>
-                Self-Improvement
-              </a>
-            </h3>
-            <p class="text-base font-semibold text-gray-900">
-              Journals and note-taking
-            </p>
-          </div>
+        <div class="flex justify-center mt-8">
+          <button
+            class="text-white px-10 py-3 hover:opacity-70"
+            style="background-color: #44533c"
+          >
+            XEM THÊM
 
-          <div class="group relative">
-            <div
-              class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 inline-block ml-2"
             >
-              <img
-                src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg"
-                alt="Collection of four insulated travel bottles on wooden shelf."
-                class="h-full w-full object-cover object-center"
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
               />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END Products -->
+</ng-template>
+
+<ng-template #colections>
+  <section>
+    <div class="bg-gray-100">
+      <div class="container mx-auto">
+        <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+          <h2 class="text-2xl font-bold text-gray-900">Collections</h2>
+
+          <div
+            class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0"
+          >
+            <div class="group relative">
+              <div
+                class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1"
+              >
+                <img
+                  src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg"
+                  alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
+                  class="h-full w-full object-cover object-center"
+                />
+              </div>
+              <h3 class="mt-6 text-sm text-gray-500">
+                <a href="#">
+                  <span class="absolute inset-0"></span>
+                  Desk and Office
+                </a>
+              </h3>
+              <p class="text-base font-semibold text-gray-900">
+                Work from home accessories
+              </p>
             </div>
-            <h3 class="mt-6 text-sm text-gray-500">
-              <a href="#">
-                <span class="absolute inset-0"></span>
-                Travel
-              </a>
-            </h3>
-            <p class="text-base font-semibold text-gray-900">
-              Daily commute essentials
-            </p>
+
+            <div class="group relative">
+              <div
+                class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1"
+              >
+                <img
+                  src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg"
+                  alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."
+                  class="h-full w-full object-cover object-center"
+                />
+              </div>
+              <h3 class="mt-6 text-sm text-gray-500">
+                <a href="#">
+                  <span class="absolute inset-0"></span>
+                  Self-Improvement
+                </a>
+              </h3>
+              <p class="text-base font-semibold text-gray-900">
+                Journals and note-taking
+              </p>
+            </div>
+
+            <div class="group relative">
+              <div
+                class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1"
+              >
+                <img
+                  src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg"
+                  alt="Collection of four insulated travel bottles on wooden shelf."
+                  class="h-full w-full object-cover object-center"
+                />
+              </div>
+              <h3 class="mt-6 text-sm text-gray-500">
+                <a href="#">
+                  <span class="absolute inset-0"></span>
+                  Travel
+                </a>
+              </h3>
+              <p class="text-base font-semibold text-gray-900">
+                Daily commute essentials
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</ng-template>
 
-<!-- END Collections -->
-
-<!-- New Products -->
-<section>
-  <div class="bg-white">
-    <div
-      class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
-    >
-      <div class="flex justify-between">
-        <h2 class="text-2xl font-bold tracking-tight text-gray-900">
-          New Products
-        </h2>
-        <a class="font-medium text-indigo-600 hover:text-indigo-500">
-          See everything
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6 inline-block"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-            />
-          </svg>
-        </a>
-      </div>
-
-      <div
-        class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
-      >
-        <ng-container *ngFor="let i of newProducts$ | async">
-          <div class="group relative">
-            <div
-              class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80"
-            >
-              <img
-                [src]="i.imageUrl"
-                alt="Front of men&#039;s Basic Tee in black."
-                class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-              />
+<ng-template #newProducts>
+  <!-- Trending Products -->
+  <section>
+    <div class="bg-white">
+      <div class="container mx-auto py-28">
+        <div class="flex justify-center mb-12">
+          <h2 class="text-4xl tracking-tight text-gray-900 font-semibold">
+            Sản Phẩm Mới
+          </h2>
+        </div>
+        <div
+          class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
+        >
+          <ng-container *ngFor="let i of newProducts$ | async">
+            <div class="group product-item cursor-pointer p-6">
+              <div
+                class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none"
+                style="height: 462px"
+              >
+                <img
+                  [src]="i.imageUrl"
+                  alt="img"
+                  class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                />
+              </div>
+              <div class="mt-5 text-gray-700 text-base font-medium">
+                {{ i.name }}
+              </div>
+              <div class="mt-5 text-red-400 text-base font-medium">
+                {{ i.price | currency: "VND" }}
+              </div>
+              <div class="mt-5"></div>
             </div>
-            <h3 class="mt-4 text-sm text-gray-700">{{ i.name }}</h3>
-            <p class="text-sm font-medium text-gray-900">
-              {{ i.price | currency: "VND" }}
-            </p>
-          </div>
-        </ng-container>
+          </ng-container>
+        </div>
+
+        <div class="flex justify-center mt-8">
+          <button
+            class="text-white px-10 py-3 hover:opacity-70"
+            style="background-color: #44533c"
+          >
+            XEM THÊM
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 inline-block ml-2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- END Products -->
+  </section>
+  <!-- END Products -->
+</ng-template>
 
-<div
-  class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events"
->
-  <div
-    class="swiper-wrapper gx-0"
-    id="swiper-wrapper-61823925187c732c"
-    aria-live="off"
-    style="transform: translate3d(0px, 0px, 0px); transition-duration: 600ms"
-  >
-    <div
-      class="swiper-slide swiper-slide-active"
-      role="group"
-      aria-label="1 / 5"
+<ng-template #intro>
+  <section>
+    <div style="background-color: #f2f5f0">
+      <div class="container mx-auto py-28">
+        <div class="grid grid-cols-3">
+          <div class="text-center">
+            <img
+              class="mx-auto mb-6"
+              src="./assets/icons/svgs/face.svg"
+              alt="img"
+            />
+            <div class="text-center text-3xl mb-5">Anti-Aging Facial</div>
+            <div class="text-sm">
+              Contrary to popular belief Lorem Ipsum or random text It has roots
+              in
+            </div>
+          </div>
+
+          <div class="text-center">
+            <img
+              class="mx-auto mb-6"
+              src="./assets/icons/svgs/hydra.svg"
+              alt="img"
+            />
+            <div class="text-center text-3xl mb-5">Hydra Facial</div>
+            <div class="text-sm">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry
+            </div>
+          </div>
+
+          <div class="text-center">
+            <img
+              class="mx-auto mb-6"
+              src="./assets/icons/svgs/skin.svg"
+              alt="img"
+            />
+            <div class="text-center text-3xl mb-5">Skin Tightening</div>
+            <div class="text-sm">
+              It is a long established fact reader will be distracted by the
+              readable
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #intro1>
+  <section>
+    <div class="bg-white">
+      <div class="container mx-auto py-32">
+        <div class="grid grid-cols-2">
+          <img
+            class="pr-10"
+            src="
+          https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/about-img.jpg"
+            alt="img"
+          />
+          <div>
+            <div class="mb-7 text-sm">MORE ABOUT</div>
+            <div class="text-5xl mb-8">
+              Just Find Skin Care That Works For You
+            </div>
+            <div class="mb-8 text-sm">
+              There are many variations of passages of Lorem Ipsum avail the
+              majority have suffered alteration in some form by more humour or
+              ra mised even slightly believable.
+            </div>
+            <!--  -->
+            <div class="flex items-center text-sm mb-6">
+              <svg
+                class="min-w-max w-8 h-8 mr-3"
+                data-name="Layer 1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 28 28"
+              >
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill: #75846e;
+                    }
+                    .cls-2 {
+                      fill: #fff;
+                    }
+                  </style>
+                </defs>
+                <circle class="cls-1" cx="14" cy="14" r="14"></circle>
+                <path
+                  class="cls-2"
+                  d="M8.65,15.51l4,4.75,8.65-9.76-.86-.76L12.72,18.5,9.53,14.76Z"
+                  transform="translate(-1 -1)"
+                ></path>
+              </svg>
+              <div>
+                There are many variations of passages of Lorem Ipsum available
+                but the words etc.
+              </div>
+            </div>
+            <!--  -->
+            <div class="flex items-center text-sm mb-6">
+              <svg
+                class="min-w-max w-8 h-8 mr-3"
+                data-name="Layer 1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 28 28"
+              >
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill: #75846e;
+                    }
+                    .cls-2 {
+                      fill: #fff;
+                    }
+                  </style>
+                </defs>
+                <circle class="cls-1" cx="14" cy="14" r="14"></circle>
+                <path
+                  class="cls-2"
+                  d="M8.65,15.51l4,4.75,8.65-9.76-.86-.76L12.72,18.5,9.53,14.76Z"
+                  transform="translate(-1 -1)"
+                ></path>
+              </svg>
+              <div>
+                Contrary to popular belief, Lorem Ipsum is not simply has roots
+                in a piece of classical. Contrary to popular belief, Lorem Ipsum
+                is not simply has roots in a piece of classical.
+              </div>
+            </div>
+            <!--  -->
+            <div class="flex items-center text-sm mb-9">
+              <svg
+                class="min-w-max w-8 h-8 mr-3"
+                data-name="Layer 1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 28 28"
+              >
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill: #75846e;
+                    }
+                    .cls-2 {
+                      fill: #fff;
+                    }
+                  </style>
+                </defs>
+                <circle class="cls-1" cx="14" cy="14" r="14"></circle>
+                <path
+                  class="cls-2"
+                  d="M8.65,15.51l4,4.75,8.65-9.76-.86-.76L12.72,18.5,9.53,14.76Z"
+                  transform="translate(-1 -1)"
+                ></path>
+              </svg>
+              <div>
+                Ut in dignissim diam. Curabitur lacinia est quis purus
+                Suspendisse mattis tempor.
+              </div>
+            </div>
+
+            <button
+              class="text-white px-10 py-3 hover:opacity-70"
+              style="background-color: #44533c"
+            >
+              READ MORE
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #video>
+  <div class="relative">
+    <img
+      height="680"
+      src="https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img.jpg"
+      class="w-full"
+      loading="lazy"
+      srcset="
+        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img.jpg          1903w,
+        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-300x107.jpg   300w,
+        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-1024x366.jpg 1024w,
+        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-768x274.jpg   768w,
+        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-1536x549.jpg 1536w,
+        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-600x214.jpg   600w
+      "
+      sizes="(max-width: 1903px) 100vw, 1903px"
+    />
+
+    <button
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer"
+      (click)="showVideo = true"
     >
-      <a href="https://polomanor.vn/san-pham" class="ratio">
-        <img
-          src="https://polomanor.vn/1428355432291766272/images/vi/desk/banner/poloman-new-version_1570973735744180224.jpeg"
-          alt="POLOMAN NEW VERSION"
+      <svg
+        class="w-24 h-24 text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="{1.5}"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
         />
-      </a>
-    </div>
-
-    <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 5">
-      <a href="https://polomanor.vn/san-pham" class="ratio">
-        <img
-          src="https://polomanor.vn/1428355432291766272/images/vi/desk/banner/polo-basic-vee_1570600601438392320.jpeg"
-          alt="POLO BASIC VEE"
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
         />
-      </a>
-    </div>
-
-    <div class="swiper-slide" role="group" aria-label="3 / 5">
-      <a href="#" class="ratio">
-        <img
-          src="https://polomanor.vn/1428355432291766272/images/vi/desk/banner/gia-dung-thu_1551130626545946624.jpeg"
-          alt="GIA DUNG THU"
-        />
-      </a>
-    </div>
-
-    <div class="swiper-slide" role="group" aria-label="4 / 5">
-      <a href="" class="ratio">
-        <img
-          src="https://happyhow-cdn.sgp1.digitaloceanspaces.com/images/vi/desk/banner/free-ship_1552215480905764864.jpeg"
-          alt="FREE SHIP"
-        />
-      </a>
-    </div>
-
-    <div class="swiper-slide" role="group" aria-label="5 / 5">
-      <a href="" class="ratio">
-        <img
-          src="https://polomanor.vn/1428355432291766272/images/vi/desk/banner/free-box_1552215761349513216.jpeg"
-          alt="FREE BOX"
-        />
-      </a>
-    </div>
+      </svg>
+    </button>
   </div>
+</ng-template>
 
-  <div
-    class="swiper-button-prev swiper-button-prev--3 swiper-button-disabled"
-    tabindex="-1"
-    role="button"
-    aria-label="Previous slide"
-    aria-controls="swiper-wrapper-61823925187c732c"
-    aria-disabled="true"
-  ></div>
-  <div
-    class="swiper-button-next swiper-button-next--3"
-    tabindex="0"
-    role="button"
-    aria-label="Next slide"
-    aria-controls="swiper-wrapper-61823925187c732c"
-    aria-disabled="false"
-  ></div>
+<ng-template #comments>
+  <section>
+    <div style="background-color: #f2f5f0">
+      <div class="container mx-auto py-20">
+        <div class="text-center px-56">
+          <img
+            class="mx-auto mb-8"
+            src="./assets/icons/svgs/comment.svg"
+            alt="img"
+          />
+          <div class="text-sm mb-10">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry Lorem Ipsum has standard dummy text ever since the 1500
+            when an unknown printera galley of type and scrambled it to make a
+            type specimen book.
+          </div>
+          <div class="text-center text-3xl mb-2">Anti-Aging Facial</div>
+          <div class="text-sm">Relax Massage</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
 
-  <div
-    class="swiper-pagination swiper-pagination-absolute swiper-pagination-F2 swiper-pagination-clickable swiper-pagination-bullets"
-  >
-    <span
-      class="swiper-pagination-bullet swiper-pagination-bullet-active"
-      tabindex="0"
-      role="button"
-      aria-label="Go to slide 1"
-    ></span
-    ><span
-      class="swiper-pagination-bullet"
-      tabindex="0"
-      role="button"
-      aria-label="Go to slide 2"
-    ></span
-    ><span
-      class="swiper-pagination-bullet"
-      tabindex="0"
-      role="button"
-      aria-label="Go to slide 3"
-    ></span
-    ><span
-      class="swiper-pagination-bullet"
-      tabindex="0"
-      role="button"
-      aria-label="Go to slide 4"
-    ></span
-    ><span
-      class="swiper-pagination-bullet"
-      tabindex="0"
-      role="button"
-      aria-label="Go to slide 5"
-    ></span>
-  </div>
-  <span
-    class="swiper-notification"
-    aria-live="assertive"
-    aria-atomic="true"
-  ></span>
-</div>
+<ng-template #popularPost>
+  <section>
+    <div class="bg-white">
+      <div class="container mx-auto py-28">
+        <div class="flex justify-center mb-12">
+          <h2 class="text-4xl tracking-tight text-gray-900 font-semibold">
+            Bài Viết Nổi Bật
+          </h2>
+        </div>
+        <div
+          class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
+        >
+          <ng-container *ngFor="let i of popularPost$ | async">
+            <div class="group cursor-pointer text-center">
+              <div
+                class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none"
+                style="height: 462px"
+              >
+                <img
+                  [src]="i.imageUrl"
+                  alt="img"
+                  class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                />
+              </div>
+              <div class="mt-5 text-gray-700 text-2xl font-medium">
+                {{ i.name }}
+              </div>
+              <div class="mt-5 text-gray-700 text-base font-medium">
+                {{ i.time | date: "MMM dd, yyyy" }} - By Admin
+              </div>
+              <div class="mt-5"></div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="flex justify-center mt-8">
+          <button
+            class="text-white px-10 py-3 hover:opacity-70"
+            style="background-color: #44533c"
+          >
+            XEM THÊM
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 inline-block ml-2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<nmt-modal [(isVisible)]="showVideo" [size]="'xl'" [showClose]="false">
+  <iframe
+    src="https://www.youtube.com/embed/rHKCWKZA6RI"
+    title="Những Bản Piano Cover Cảm Xúc Nhất Của An Coong || An Coong 2020"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen="1"
+    width="100%"
+    height="625"
+  ></iframe>
+</nmt-modal>

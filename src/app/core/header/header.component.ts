@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ROUTES_CONST } from '../const';
+
+export interface HeaderItem {
+  label: string;
+  route: string;
+}
 
 @Component({
   selector: 'nmt-header',
@@ -7,7 +12,7 @@ import { ROUTES_CONST } from '../const';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  items = [
+  @Input() items: HeaderItem[] = [
     {
       label: 'Giới thiệu',
       route: ROUTES_CONST.HOME.ROOT,
@@ -29,6 +34,8 @@ export class HeaderComponent implements OnInit {
       route: ROUTES_CONST.ARTICE.ROOT,
     },
   ];
+
+  @Input() isShow: boolean = false;
 
   constructor() {}
 

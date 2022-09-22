@@ -18,74 +18,86 @@ export class HomeComponent implements OnInit {
       url: 'https://gaspa.vn/wp-content/uploads/2022/03/z3258774024138_769db9af461532aec73dc99bd44bff20-scaled.jpg',
     },
   ];
-  carouselIndex = 0;
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  showSolutions: boolean = false;
   trendingProducts$ = of([
     {
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2022/04/3in1b-08-scaled.jpg',
       name: 'Liệu trình Điều trị chuyên sâu 3IN1',
-      price: 120000,
     },
     {
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2021/10/trimun-thaidoc-1-1-scaled.jpg',
-      name: 'Liệu trình Điều trị chuyên sâu 3IN1',
-      price: 120000,
+      name: 'Dịch vụ thải độc da thảo dược',
     },
     {
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2021/10/jqjqjqjq-1-1-scaled.jpg',
-      name: 'Liệu trình Điều trị chuyên sâu 3IN1 ',
-      price: 120000,
+      name: 'Liệu trình điều trị Mụn lưng – viêm nang lông với công nghệ IPL ',
     },
     {
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2021/11/hinh-bs-3-scaled.jpg',
-      name: 'Liệu trình Điều trị chuyên sâu 3IN1 ',
-      price: 120000,
-    },
-    {
-      imageUrl:
-        'https://gaspa.vn/wp-content/uploads/2021/10/kiemnhon-trimun-23-04-2019-03.jpg',
-      name: 'Liệu trình Điều trị chuyên sâu 3IN1 ',
-      price: 120000,
+      name: 'Liệu trình da nhiễm Corticoid ',
     },
   ]);
 
   newProducts$ = of([
     {
       imageUrl:
-        'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-      name: 'T-shirt 1',
-      price: 120000,
+        'https://gaspa.vn/wp-content/uploads/2022/06/1707x1707-scaled.jpg',
+      name: 'Rose Sleeping Mask – 50g',
+      price: 388000,
+    },
+    {
+      imageUrl: 'https://gaspa.vn/wp-content/uploads/2022/06/KCN-scaled.jpeg',
+      name: 'Kem Chống Nắng Sunflower SPF 50+ PA++++ 30g',
+      price: 488000,
     },
     {
       imageUrl:
-        'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg',
-      name: 'T-shirt 2',
-      price: 120000,
+        'https://gaspa.vn/wp-content/uploads/2022/06/Collagen-mask-scaled.jpeg',
+      name: 'KEVA MASK Collagen – 25g',
+      price: 1110000,
     },
     {
       imageUrl:
-        'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg',
-      name: 'T-shirt 3',
-      price: 120000,
-    },
-    {
-      imageUrl:
-        'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg',
-      name: 'T-shirt 4',
-      price: 120000,
+        'https://gaspa.vn/wp-content/uploads/2022/06/Body-ngay-scaled.jpeg',
+      name: 'Kem Dưỡng Ngày Lotus Body Whitening – 150g',
+      price: 150000,
     },
   ]);
 
-  load(x: any) {
-    console.log(x);
-  }
+  popularPost$ = of([
+    {
+      imageUrl:
+        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2021/08/The-Best-eleifend-Anti-Aging-Skin-Care-Routine-By-Experts.jpg',
+      name: 'Botox, Fillers & An Effective Anti-Aging Skincare Routine',
+      time: new Date('03/06/2022'),
+    },
+    {
+      imageUrl:
+        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/03/Botox-Fillers-An-Effective-Anti-Aging-Skincare-Routine.jpg',
+      name: 'Skin Care & Beauty Best-Vintage Bonorum Malorum',
+      time: new Date('03/07/2022'),
+    },
+    {
+      imageUrl:
+        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2021/06/Skin-Care-Beauty-Best-Vintage-Bonorum-Malorum.jpg',
+      name: 'Self Care & Wellness Ideas consequuntur magni dolores',
+      time: new Date('03/08/2022'),
+    },
+    {
+      imageUrl:
+        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2018/05/The-Ultimate-Guide-to-Aging-Skin-Ipsum-Pretium-Bouquet.jpg',
+      name: 'The Ultimate Guide To Aging Skin Ipsum Pretium Bouquet',
+      time: new Date('05/12/2022'),
+    },
+  ]);
+
+  showVideo: boolean = false;
+
+  constructor() {}
+
+  ngOnInit(): void {}
 }
