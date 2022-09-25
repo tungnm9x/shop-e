@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ROUTES_CONST } from '@core/const';
 import { of } from 'rxjs';
 
 @Component({
@@ -7,17 +8,8 @@ import { of } from 'rxjs';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  // carouselItems = [
-  //   {
-  //     url: 'https://gaspa.vn/wp-content/uploads/2022/08/cover-1@4x-8.png',
-  //   },
-  //   {
-  //     url: 'https://gaspa.vn/wp-content/uploads/2022/01/bnner1fquynhne-01-scaled.jpg',
-  //   },
-  //   {
-  //     url: 'https://gaspa.vn/wp-content/uploads/2022/03/z3258774024138_769db9af461532aec73dc99bd44bff20-scaled.jpg',
-  //   },
-  // ];
+  ROUTES_CONST = ROUTES_CONST;
+
   carouselItems = [
     {
       url: 'https://livedemo00.template-help.com/wt_60044/images/home-slider-1-slide-1-1920x900.jpg',

@@ -9,8 +9,7 @@
       class="flex items-center justify-between py-6 lg:justify-start lg:space-x-10"
     >
       <div class="flex justify-start lg:w-0 lg:flex-1">
-        <a href="#">
-          <span class="sr-only">Your Company</span>
+        <a [routerLink]="['/']">
           <img
             class="w-auto"
             src="https://polomanor.vn/1428355432291766272/images/Polomanor.svg"
@@ -47,9 +46,10 @@
         <a
           *ngFor="let i of items"
           [routerLink]="[i.route]"
-          class="text-sm font-medium text-gray-500 hover:text-gray-900"
-          >{{ i.label }}</a
-        >
+          [routerLinkActive]="'font-bold'"
+          class="text-sm font-medium hover:font-bold"
+          >{{ i.label }}
+        </a>
       </nav>
       <div class="hidden items-center justify-end lg:flex lg:flex-1 lg:w-0">
         <svg

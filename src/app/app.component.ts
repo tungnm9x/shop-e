@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Helper } from '@core/utils';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  Helper = Helper;
   title = 'shop-e';
 }

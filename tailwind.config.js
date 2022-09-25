@@ -13,6 +13,11 @@ module.exports = {
     fontFamily: {
       'sans': ['Montserrat', 'sans-serif'],
       'serif': ['Cormorant Garamond', 'serif'],
+    },
+    extend: {
+      colors :{
+        'primary': '#44533c'
+      }
     }
   },
 }

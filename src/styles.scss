@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: #44533c;
+}
+
 html,
 body {
   font-family: Montserrat, sans-serif;
@@ -42,4 +46,29 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+// slider
+
+.ngx-slider .ngx-slider-pointer {
+  width: 16px !important;
+  height: 16px !important;
+  background-color: var(--primary) !important;
+  cursor: ew-resize;
+  outline: none;
+  top: -5.5px !important;
+}
+
+.ngx-slider .ngx-slider-pointer:after {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.ngx-slider .ngx-slider-selection {
+  background: var(--primary) !important;
+  height: 6px !important;
+}
+
+.ngx-slider .ngx-slider-bubble {
+  display: none !important;
 }
