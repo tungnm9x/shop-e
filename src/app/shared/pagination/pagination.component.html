@@ -1,0 +1,37 @@
+<div class="flex justify-center">
+  <nav aria-label="Page navigation example">
+    <ul class="flex list-style-none">
+      <ng-container *ngFor="let i of [].constructor(total); index as index">
+        <li class="page-item" [class.active]="index + 1 === pageIndex">
+          <a
+            class="page-link relative block py-1.5 px-4 border-0 bg-transparent outline-none transition-all duration-300 text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+            (click)="gotoPage(index + 1)"
+            >{{ index + 1 }}</a
+          >
+        </li>
+      </ng-container>
+
+      <li class="page-item">
+        <a
+          class="flex items-center h-full page-link relative py-1.5 px-4 border-0 bg-transparent outline-none transition-all duration-300 text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+          href="#"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-4 h-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

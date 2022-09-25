@@ -1,0 +1,35 @@
+.product-item {
+  &:hover {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: 0.3s cubic-bezier(0.17, 0.67, 0.35, 0.95);
+  }
+}
+
+.page-item {
+  border: 1px solid var(--primary);
+  border-radius: 0px;
+  background-color: white;
+  border-color: #75846e;
+  border-style: solid;
+  border-width: 1px;
+  color: var(--primary);
+  display: inline-block;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  margin: 0px 7.5px 0px 0px;
+  text-align: center;
+  line-height: 27.75px;
+
+  & .page-link {
+    background: transparent;
+  }
+
+  &.active {
+    border: 1px solid var(--primary);
+    background-color: #75846e;
+    border-color: #75846e;
+    & .page-link {
+      color: white !important;
+    }
+  }
+}

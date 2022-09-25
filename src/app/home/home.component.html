@@ -1,4 +1,3 @@
-<nmt-header></nmt-header>
 <nmt-carousel [items]="carouselItems"></nmt-carousel>
 <ng-container [ngTemplateOutlet]="intro1"></ng-container>
 <ng-container [ngTemplateOutlet]="intro"></ng-container>
@@ -7,7 +6,6 @@
 <ng-container [ngTemplateOutlet]="newProducts"></ng-container>
 <ng-container [ngTemplateOutlet]="comments"></ng-container>
 <ng-container [ngTemplateOutlet]="popularPost"></ng-container>
-<nmt-footer></nmt-footer>
 
 <ng-template #trendingProducts>
   <!-- Trending Products -->
@@ -107,6 +105,7 @@
 
         <div class="flex justify-center mt-8">
           <button
+            [routerLink]="[ROUTES_CONST.PRODUCT.ROOT]"
             class="text-white px-10 py-3 hover:opacity-70"
             style="background-color: #44533c"
           >

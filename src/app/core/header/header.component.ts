@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ROUTES_CONST } from '../const';
+import { ROUTES_CONST } from '@core/const';
 
 export interface HeaderItem {
   label: string;
@@ -13,6 +13,8 @@ export interface HeaderItem {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  ROUTES_CONST = ROUTES_CONST;
+
   @Input() items: HeaderItem[] = [
     {
       label: 'Giới thiệu',
