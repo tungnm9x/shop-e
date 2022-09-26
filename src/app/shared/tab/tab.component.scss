@@ -1,0 +1,13 @@
+.tab-active {
+  @apply text-white opacity-70 bg-primary border-primary;
+}
+
+ul::after {
+  position: absolute;
+  content: " ";
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  @apply border-b border-gray-200;
+}

@@ -1,8 +1,11 @@
 <div class="flex justify-center">
-  <nav aria-label="Page navigation example">
+  <nav>
     <ul class="flex list-style-none">
       <ng-container *ngFor="let i of [].constructor(total); index as index">
-        <li class="page-item" [class.active]="index + 1 === pageIndex">
+        <li
+          class="page-item cursor-pointer"
+          [class.active]="index + 1 === pageIndex"
+        >
           <a
             class="page-link relative block py-1.5 px-4 border-0 bg-transparent outline-none transition-all duration-300 text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
             (click)="gotoPage(index + 1)"

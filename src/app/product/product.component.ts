@@ -64,37 +64,43 @@ export class ProductComponent implements OnInit {
     },
   ];
 
-  constructor() {}
-
-  ngOnInit(): void {
-    Helper.scrollToTop();
-  }
-
   pageIndex = 1;
   total = 5;
   newProducts$ = of([
     {
+      id: 1,
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2022/06/1707x1707-scaled.jpg',
       name: 'Rose Sleeping Mask – 50g',
       price: 388000,
     },
     {
+      id: 2,
       imageUrl: 'https://gaspa.vn/wp-content/uploads/2022/06/KCN-scaled.jpeg',
       name: 'Kem Chống Nắng Sunflower SPF 50+ PA++++ 30g',
       price: 488000,
     },
     {
+      id: 3,
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2022/06/Collagen-mask-scaled.jpeg',
       name: 'KEVA MASK Collagen – 25g',
       price: 1110000,
     },
     {
+      id: 4,
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2022/06/Body-ngay-scaled.jpeg',
       name: 'Kem Dưỡng Ngày Lotus Body Whitening – 150g',
       price: 150000,
     },
   ]);
+
+  showFilter = false;
+
+  constructor() {}
+
+  ngOnInit(): void {
+    Helper.scrollToTop();
+  }
 }

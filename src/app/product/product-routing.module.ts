@@ -4,6 +4,13 @@ import { ProductComponent } from './product.component';
 
 const routes: Routes = [
   {
+    path: ':id',
+    loadChildren: () =>
+      import('./product-detail/product-detail.module').then(
+        (m) => m.ProductDetailModule
+      ),
+  },
+  {
     path: '',
     component: ProductComponent,
   },

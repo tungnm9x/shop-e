@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  trendingProducts$ = of([
+  trendingServices$ = of([
     {
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2022/04/3in1b-08-scaled.jpg',

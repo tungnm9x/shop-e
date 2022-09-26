@@ -1,0 +1,22 @@
+<ul
+  class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none pl-0 mb-6 relative"
+>
+  <ng-container *ngFor="let tab of tabs; index as index">
+    <li class="nav-item">
+      <button
+        [class.tab-active]="tabIndex === index + 1"
+        class="cursor-pointer text-xs font-medium uppercase px-7 py-3 hover:bg-gray-100 mr-2 border-gray-200 border w-full md:w-auto"
+        (click)="tabIndex = index + 1"
+      >
+        {{ tab.label }}
+      </button>
+    </li>
+  </ng-container>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade show active">
+    <ng-container
+      *ngTemplateOutlet="contentTpl; context: { $implicit: tabs[tabIndex - 1] }"
+    ></ng-container>
+  </div>
+</div>
