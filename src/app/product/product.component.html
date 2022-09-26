@@ -1,5 +1,5 @@
 <section>
-  <div style="background-color: #f2f5f0">
+  <div class="bg-secondary">
     <div class="container mx-auto py-14 lg:py-20">
       <div class="text-center">
         <h2 class="text-4xl tracking-tight font-bold font-serif mb-4">
@@ -19,44 +19,34 @@
   </div>
 </section>
 
+<div class="fixed top-1/2 left-0 lg:hidden">
+  <button
+    class="text-white px-4 py-3 hover:opacity-70 bg-primary"
+    (click)="showFilter = true"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
+      />
+    </svg>
+  </button>
+</div>
+
 <section>
   <div class="bg-white">
     <div class="container mx-auto py-14 lg:py-20">
       <div class="grid grid-cols-4 lg:gap-x-10 xl:gap-x-14">
-        <div class="filter hidden lg:block">
-          <div class="pb-6 mb-8" style="border-bottom: 1px solid #e5e5e5">
-            <h2 class="text-3xl font-bold font-serif mb-5">Bộ lọc</h2>
-            <ul>
-              <ng-container *ngFor="let c of categories$ | async">
-                <li class="py-1 cursor-pointer hover:font-semibold">
-                  <div class="flex justify-between text-base">
-                    <span>{{ c.name }}</span>
-                    <span>({{ c.quantity }})</span>
-                  </div>
-                </li>
-              </ng-container>
-            </ul>
-          </div>
-
-          <div class="pb-6 mb-8">
-            <h2 class="text-3xl font-bold font-serif mb-1">Giá</h2>
-            <div class="slider mb-6">
-              <ngx-slider
-                [(value)]="minValue"
-                [(highValue)]="maxValue"
-                [options]="options"
-              ></ngx-slider>
-            </div>
-            <button
-              class="text-white px-10 py-3 hover:opacity-70 bg-primary mb-6"
-            >
-              Áp Dụng
-            </button>
-            <div class="text-sm font-bold">
-              Price: {{ minValue | currency: "VND" }} -
-              {{ maxValue | currency: "VND" }}
-            </div>
-          </div>
+        <div class="hidden lg:block">
+          <ng-container [ngTemplateOutlet]="filter"></ng-container>
         </div>
         <div class="col-span-4 lg:col-span-3">
           <div class="flex justify-between">
@@ -80,40 +70,66 @@
           </div>
 
           <ng-container [ngTemplateOutlet]="products"></ng-container>
-          <nmt-pagination></nmt-pagination>
+          <nmt-pagination [total]="10" [pageIndex]="1"></nmt-pagination>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- FILTER -->
+<ng-template #filter>
+  <div class="pb-6 mb-8" style="border-bottom: 1px solid #e5e5e5">
+    <h2 class="text-3xl font-bold font-serif mb-5">Bộ lọc</h2>
+    <ul>
+      <ng-container *ngFor="let c of categories$ | async">
+        <li class="py-1 cursor-pointer hover:font-semibold">
+          <div class="flex justify-between text-base">
+            <span>{{ c.name }}</span>
+            <span>({{ c.quantity }})</span>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+  <div class="pb-6 mb-8">
+    <h2 class="text-3xl font-bold font-serif mb-1">Giá</h2>
+    <div class="slider mb-6">
+      <ngx-slider
+        [(value)]="minValue"
+        [(highValue)]="maxValue"
+        [options]="options"
+      ></ngx-slider>
+    </div>
+    <button class="text-white px-10 py-3 hover:opacity-70 bg-primary mb-6">
+      Áp Dụng
+    </button>
+    <div class="text-sm font-bold">
+      Price: {{ minValue | currency: "VND" }} -
+      {{ maxValue | currency: "VND" }}
+    </div>
+  </div>
+</ng-template>
+<!-- END FILTER -->
+
+<!-- PRODUCT LIST -->
 <ng-template #products>
-  <!-- Trending Products -->
   <section>
     <div
       class="mt-6 mb-6 grid grid-cols-1 gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-x-8"
     >
       <ng-container *ngFor="let i of newProducts$ | async">
-        <div class="group product-item cursor-pointer p-6">
-          <div
-            class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 group-hover:opacity-75 lg:aspect-none h-96"
-          >
-            <img
-              [src]="i.imageUrl"
-              alt="img"
-              class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-            />
-          </div>
-          <div class="mt-5 text-gray-700 text-base font-medium">
-            {{ i.name }}
-          </div>
-          <div class="mt-5 text-red-400 text-base font-medium">
-            {{ i.price | currency: "VND" }}
-          </div>
-          <div class="mt-5"></div>
-        </div>
+        <nmt-product-item
+          [item]="i"
+          [routerLink]="[ROUTES_CONST.PRODUCT.ROOT, i.id]"
+        ></nmt-product-item>
       </ng-container>
     </div>
   </section>
-  <!-- END Products -->
 </ng-template>
+<!-- END PRODUCT LIST -->
+
+<nmt-slide-over [(isVisible)]="showFilter">
+  <ng-container [ngTemplateOutlet]="filter"></ng-container>
+</nmt-slide-over>

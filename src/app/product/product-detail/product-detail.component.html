@@ -1,0 +1,127 @@
+<section>
+  <div class="bg-secondary">
+    <div class="container mx-auto py-14 lg:py-20">
+      <div class="text-center">
+        <h2 class="text-4xl tracking-tight font-bold font-serif mb-4">
+          Thông tin sản Phẩm
+        </h2>
+        <div class="px-9 lg:px-56">
+          <span
+            class="text-sm underline cursor-pointer"
+            [routerLink]="[ROUTES_CONST.HOME.ROOT]"
+            >Giới thiệu</span
+          >
+          /
+          <span
+            class="text-sm underline cursor-pointer"
+            [routerLink]="[ROUTES_CONST.PRODUCT.ROOT]"
+            >Sản phẩm</span
+          >
+          /
+          <span class="text-sm">Chi tiết</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-container *ngIf="detail$ | async as detail">
+  <section>
+    <div class="bg-white">
+      <div class="container mx-auto py-14 lg:py-20">
+        <!-- PRODUCT DETAIL -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-8 md:gap-x-10 mb-14"
+        >
+          <div class="flex justify-center">
+            <img
+              class="h-fit"
+              [src]="
+                'https://media.hasaki.vn/catalog/product/s/o/son-thoi-li-3ce-soft-matte-mau-_red-muse-3.5g-1_img_358x358_843626_fit_center.jpg'
+              "
+              alt="product image"
+            />
+          </div>
+          <div>
+            <div class="mb-6 text-lg font-semibold">
+              {{ detail.name }}
+            </div>
+            <div class="mb-6">
+              <span class="text-gray-500 line-through mr-2">{{
+                500000 | currency: "VND"
+              }}</span>
+              <b class="text-lg text-red-400"
+                >{{ 423000 | currency: "VND" }}
+              </b>
+            </div>
+            <div class="mb-12">
+              {{ detail.shortDesc }}
+            </div>
+            <div class="mb-8">
+              <button class="text-white px-10 py-3 hover:opacity-70 bg-primary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 inline-block mr-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                  />
+                </svg>
+                <span>Đặt Hàng Ngay</span>
+              </button>
+            </div>
+            <div>
+              <b class="mb-6"> Free shipping on orders over $50! </b>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABS -->
+        <nmt-tab [tabs]="tabs" [contentTpl]="tabContent"></nmt-tab>
+        <ng-template #tabContent let-tab>
+          <ng-container [ngSwitch]="tab.id">
+            <!-- Desc -->
+            <ng-container *ngSwitchCase="tabs[0].id">
+              <div [innerHTML]="detail.desc"></div>
+            </ng-container>
+            <!-- Additional Info -->
+            <ng-container *ngSwitchCase="tabs[1].id">
+              <table class="table-auto">
+                <tbody>
+                  <tr *ngFor="let i of detail.additionalInfo">
+                    <td class="border-gray-200 border p-3 text-sm">
+                      <b>{{ i.label }}</b>
+                    </td>
+                    <td class="border-gray-200 border p-3 text-sm w-full">
+                      <i>{{ i.content }}</i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-container>
+          </ng-container>
+        </ng-template>
+
+        <!-- RELATED PRODUCTS -->
+        <div class="flex justify-center mt-20">
+          <h2 class="text-4xl tracking-tight font-bold font-serif">
+            Sản Phẩm Liên Quan
+          </h2>
+        </div>
+        <div
+          class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
+        >
+          <ng-container *ngFor="let i of relatedProducts$ | async">
+            <nmt-product-item [item]="i"></nmt-product-item>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

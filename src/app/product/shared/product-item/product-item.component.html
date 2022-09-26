@@ -1,0 +1,18 @@
+<div class="group product-item cursor-pointer p-6">
+  <div
+    class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 group-hover:opacity-75 lg:aspect-none h-96"
+  >
+    <img
+      [src]="item.imageUrl"
+      alt="img"
+      class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+    />
+  </div>
+  <div class="mt-5 text-gray-700 text-base font-medium">
+    {{ item.name }}
+  </div>
+  <div class="mt-5 text-red-400 text-base font-medium">
+    {{ item.price | currency: "VND" }}
+  </div>
+  <div class="mt-5"></div>
+</div>

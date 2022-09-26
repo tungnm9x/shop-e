@@ -4,6 +4,7 @@ export const ROUTES_CONST = {
   },
   PRODUCT: {
     ROOT: '/product',
+    DETAIL: '/product/:id',
   },
   SERVICE: {
     ROOT: '/service',

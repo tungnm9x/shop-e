@@ -72,3 +72,17 @@ ul {
 .ngx-slider .ngx-slider-bubble {
   display: none !important;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border: 4px;
+}
