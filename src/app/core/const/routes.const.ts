@@ -13,6 +13,6 @@ export const ROUTES_CONST = {
     ROOT: '/booking',
   },
   ARTICE: {
-    ROOT: '/article',
+    ROOT: '/blog',
   },
 };
