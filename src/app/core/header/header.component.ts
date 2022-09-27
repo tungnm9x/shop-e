@@ -10,7 +10,6 @@ export interface HeaderItem {
 @Component({
   selector: 'nmt-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   ROUTES_CONST = ROUTES_CONST;

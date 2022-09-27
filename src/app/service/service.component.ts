@@ -1,35 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTES_CONST } from '@core/const';
+import { ROUTES_CONST, SORT_DEFAULT } from '@core/const';
+import { Helper } from '@core/utils';
 import { of } from 'rxjs';
 
 @Component({
   selector: 'nmt-service',
   templateUrl: './service.component.html',
-  styleUrls: ['./service.component.scss'],
 })
 export class ServiceComponent implements OnInit {
   ROUTES_CONST = ROUTES_CONST;
   showFilter = false;
 
   sort = 1;
-  sorts = [
-    {
-      label: 'Default sorting',
-      value: 1,
-    },
-    {
-      label: 'Sort by latest',
-      value: 2,
-    },
-    {
-      label: 'Sort by price: low to high',
-      value: 3,
-    },
-    {
-      label: 'Sort by price: high to low',
-      value: 4,
-    },
-  ];
+  sorts = SORT_DEFAULT;
 
   services$ = of([
     {
@@ -130,5 +113,7 @@ export class ServiceComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    Helper.scrollToTop();
+  }
 }

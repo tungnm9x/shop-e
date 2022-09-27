@@ -1,6 +1,6 @@
 import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
-import { ROUTES_CONST } from '@core/const';
+import { ROUTES_CONST, SORT_DEFAULT } from '@core/const';
 import { Helper } from '@core/utils';
 import { of } from 'rxjs';
 
@@ -45,24 +45,7 @@ export class ProductComponent implements OnInit {
   };
 
   sort = 1;
-  sorts = [
-    {
-      label: 'Default sorting',
-      value: 1,
-    },
-    {
-      label: 'Sort by latest',
-      value: 2,
-    },
-    {
-      label: 'Sort by price: low to high',
-      value: 3,
-    },
-    {
-      label: 'Sort by price: high to low',
-      value: 4,
-    },
-  ];
+  sorts = SORT_DEFAULT;
 
   pageIndex = 1;
   total = 5;

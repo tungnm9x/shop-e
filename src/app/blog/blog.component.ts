@@ -1,15 +1,100 @@
 import { Component, OnInit } from '@angular/core';
+import { ROUTES_CONST } from '@core/const';
+import { Helper } from '@core/utils';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'nmt-blog',
   templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
+  ROUTES_CONST = ROUTES_CONST;
+  showFilter = false;
 
-  constructor() { }
+  sort = 1;
+  sorts = [
+    {
+      label: 'Default sorting',
+      value: 1,
+    },
+    {
+      label: 'Sort by latest',
+      value: 2,
+    },
+    {
+      label: 'Sort by price: low to high',
+      value: 3,
+    },
+    {
+      label: 'Sort by price: high to low',
+      value: 4,
+    },
+  ];
+
+  posts$ = of([
+    {
+      id: '1',
+      imageUrl:
+        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2021/08/The-Best-eleifend-Anti-Aging-Skin-Care-Routine-By-Experts.jpg',
+      name: 'Botox, Fillers & An Effective Anti-Aging Skincare Routine',
+      createdAt: new Date('03/06/2022').getTime(),
+      createdBy: 'Admin',
+    },
+    {
+      id: '2',
+      imageUrl:
+        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/03/Botox-Fillers-An-Effective-Anti-Aging-Skincare-Routine.jpg',
+      name: 'Skin Care & Beauty Best-Vintage Bonorum Malorum',
+      createdAt: new Date('03/07/2022').getTime(),
+      createdBy: 'Admin',
+    },
+    {
+      id: '3',
+      imageUrl:
+        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2021/06/Skin-Care-Beauty-Best-Vintage-Bonorum-Malorum.jpg',
+      name: 'Self Care & Wellness Ideas consequuntur magni dolores',
+      createdAt: new Date('03/08/2022').getTime(),
+      createdBy: 'Admin',
+    },
+    {
+      id: '4',
+      imageUrl:
+        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2018/05/The-Ultimate-Guide-to-Aging-Skin-Ipsum-Pretium-Bouquet.jpg',
+      name: 'The Ultimate Guide To Aging Skin Ipsum Pretium Bouquet',
+      createdAt: new Date('05/12/2022').getTime(),
+      createdBy: 'Admin',
+    },
+  ]);
+
+  categories$ = of([
+    {
+      name: 'Tất cả',
+      quantity: 20,
+    },
+    {
+      name: 'Thẩm mỹ mũi',
+      quantity: 5,
+    },
+    {
+      name: 'Thẩm mỹ ngực',
+      quantity: 1,
+    },
+    {
+      name: 'Căng da mặt',
+      quantity: 7,
+    },
+    {
+      name: 'Massage',
+      quantity: 2,
+    },
+    {
+      name: 'Dịch vụ khác',
+      quantity: 3,
+    },
+  ]);
+  constructor() {}
 
   ngOnInit(): void {
+    Helper.scrollToTop();
   }
-
 }

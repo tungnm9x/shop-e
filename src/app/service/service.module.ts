@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SlideOverModule } from 'app/shared/slide-over/slide-over.module';
 import { ServiceComponent } from './service.component';
+import { ServiceSharedModule } from './shared/service-shared.module';
 
 @NgModule({
   declarations: [ServiceComponent],
@@ -17,6 +18,7 @@ import { ServiceComponent } from './service.component';
       },
     ]),
     SlideOverModule,
+    ServiceSharedModule,
   ],
 })
 export class ServiceModule {}
