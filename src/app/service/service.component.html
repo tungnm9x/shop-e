@@ -118,3 +118,7 @@
   </section>
 </ng-template>
 <!-- END PRODUCT LIST -->
+
+<nmt-slide-over [(isVisible)]="showFilter">
+  <ng-container [ngTemplateOutlet]="filter"></ng-container>
+</nmt-slide-over>
