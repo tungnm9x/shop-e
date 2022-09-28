@@ -26,6 +26,11 @@ const routes: Routes = [
       import('./service/service.module').then((m) => m.ServiceModule),
   },
   {
+    path: 'booking',
+    loadChildren: () =>
+      import('./booking/booking.module').then((m) => m.BookingModule),
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'home',
