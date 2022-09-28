@@ -13,6 +13,8 @@ export class BlogItemComponent implements OnInit {
     createdBy: string;
   };
 
+  @Input() customClass = '';
+
   constructor() {}
 
   ngOnInit(): void {}

@@ -12,6 +12,13 @@ import { BlogSharedModule } from './shared/blog-shared.module';
     CommonModule,
     RouterModule.forChild([
       {
+        path: ':id',
+        loadChildren: () =>
+          import('./blog-detail/blog-detail.module').then(
+            (m) => m.BlogDetailModule
+          ),
+      },
+      {
         path: '',
         component: BlogComponent,
       },

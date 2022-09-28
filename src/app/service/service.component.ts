@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTES_CONST, SORT_DEFAULT } from '@core/const';
+import { ROUTES_CONST } from '@core/const';
 import { Helper } from '@core/utils';
 import { of } from 'rxjs';
 
@@ -10,9 +10,6 @@ import { of } from 'rxjs';
 export class ServiceComponent implements OnInit {
   ROUTES_CONST = ROUTES_CONST;
   showFilter = false;
-
-  sort = 1;
-  sorts = SORT_DEFAULT;
 
   services$ = of([
     {

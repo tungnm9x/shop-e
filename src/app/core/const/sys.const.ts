@@ -1,5 +1,5 @@
 export const CONSTANCE = {};
-export const SORT_DEFAULT = [
+export const SORT_PRODUCT = [
   {
     label: 'Default sorting',
     value: 1,
@@ -17,3 +17,4 @@ export const SORT_DEFAULT = [
     value: 4,
   },
 ];
+export const RANGE_PRICE = [0, 3000000];

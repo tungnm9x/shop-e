@@ -106,14 +106,6 @@ export class HomeComponent implements OnInit {
       createdAt: new Date('03/08/2022').getTime(),
       createdBy: 'Admin',
     },
-    {
-      id: '4',
-      imageUrl:
-        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2018/05/The-Ultimate-Guide-to-Aging-Skin-Ipsum-Pretium-Bouquet.jpg',
-      name: 'The Ultimate Guide To Aging Skin Ipsum Pretium Bouquet',
-      createdAt: new Date('05/12/2022').getTime(),
-      createdBy: 'Admin',
-    },
   ]);
 
   showVideo: boolean = false;

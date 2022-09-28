@@ -12,7 +12,8 @@ export const ROUTES_CONST = {
   BOOKING: {
     ROOT: '/booking',
   },
-  ARTICE: {
+  BLOG: {
     ROOT: '/blog',
+    DETAIL: '/blog/:id',
   },
 };

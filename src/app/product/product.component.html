@@ -19,6 +19,7 @@
   </div>
 </section>
 
+<!-- BTN FILTER IN MOBILE -->
 <div class="fixed top-1/2 left-0 lg:hidden">
   <button
     class="text-white px-4 py-3 hover:opacity-70 bg-primary"
@@ -46,7 +47,7 @@
     <div class="container mx-auto py-14 lg:py-20">
       <div class="grid grid-cols-4 lg:gap-x-10 xl:gap-x-14">
         <div class="hidden lg:block">
-          <ng-container [ngTemplateOutlet]="filter"></ng-container>
+          <ng-container [ngTemplateOutlet]="filterTpl"></ng-container>
         </div>
         <div class="col-span-4 lg:col-span-3">
           <div class="flex justify-between">
@@ -54,13 +55,13 @@
             <div class="mb-3 xl:w-96 text-end">
               <select
                 class="inline-block w-52 px-0.5 py-1.5 text-sm text-primary border-b border-solid border-gray-300 focus:outline-none"
-                [(ngModel)]="sort"
+                [(ngModel)]="filter.sort"
               >
                 <ng-container *ngFor="let i of sorts; index as index">
                   <option
                     [value]="i.value"
-                    [class.font-bold.text-sm]="i.value === sort"
-                    [selected]="i.value === sort"
+                    [class.font-bold.text-sm]="i.value === filter.sort"
+                    [selected]="i.value === filter.sort"
                   >
                     {{ i.label }}
                   </option>
@@ -78,36 +79,52 @@
 </section>
 
 <!-- FILTER -->
-<ng-template #filter>
+<ng-template #filterTpl>
+  <div class="pb-2 mb-8" style="border-bottom: 1px solid #e5e5e5">
+    <input
+      class="w-full mb-4 p-3 border border-gray-100 bg-gray-100 outline-none text-sm"
+      placeholder="Tìm kiếm sản phẩm"
+    />
+  </div>
+
   <div class="pb-6 mb-8" style="border-bottom: 1px solid #e5e5e5">
-    <h2 class="text-3xl font-bold font-serif mb-5">Bộ lọc</h2>
-    <ul>
-      <ng-container *ngFor="let c of categories$ | async">
-        <li class="py-1 cursor-pointer hover:font-semibold">
-          <div class="flex justify-between text-base">
-            <span>{{ c.name }}</span>
-            <span>({{ c.quantity }})</span>
-          </div>
-        </li>
-      </ng-container>
-    </ul>
+    <h2 class="text-3xl font-bold font-serif mb-5">Loại sản phẩm</h2>
+    <ng-container *ngIf="categories$ | async as categories; else skeleton">
+      <ul>
+        <ng-container *ngFor="let c of categories">
+          <li
+            [class.font-semibold]="filter.categoryId === c.id"
+            class="py-1 cursor-pointer hover:font-semibold"
+            (click)="chooseCategory(c)"
+          >
+            <div class="flex justify-between text-base">
+              <span>{{ c.name }}</span>
+              <span>({{ c.quantity }})</span>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+    </ng-container>
   </div>
 
   <div class="pb-6 mb-8">
     <h2 class="text-3xl font-bold font-serif mb-1">Giá</h2>
     <div class="slider mb-6">
       <ngx-slider
-        [(value)]="minValue"
-        [(highValue)]="maxValue"
+        [(value)]="filter.minValue"
+        [(highValue)]="filter.maxValue"
         [options]="options"
       ></ngx-slider>
     </div>
-    <button class="text-white px-10 py-3 hover:opacity-70 bg-primary mb-6">
+    <button
+      class="text-white px-10 py-3 hover:opacity-70 bg-primary mb-6"
+      (click)="reload()"
+    >
       Áp Dụng
     </button>
     <div class="text-sm font-bold">
-      Price: {{ minValue | currency: "VND" }} -
-      {{ maxValue | currency: "VND" }}
+      Price: {{ filter.minValue | currency: "VND" }} -
+      {{ filter.maxValue | currency: "VND" }}
     </div>
   </div>
 </ng-template>
@@ -116,20 +133,27 @@
 <!-- PRODUCT LIST -->
 <ng-template #products>
   <section>
-    <div
-      class="mt-6 mb-6 grid grid-cols-1 gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-x-8"
-    >
-      <ng-container *ngFor="let i of newProducts$ | async">
-        <nmt-product-item
-          [item]="i"
-          [routerLink]="[ROUTES_CONST.PRODUCT.ROOT, i.id]"
-        ></nmt-product-item>
-      </ng-container>
-    </div>
+    <ng-container *ngIf="newProducts$ | async as newProducts; else skeleton">
+      <div
+        class="mt-6 mb-6 grid grid-cols-1 gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-x-8"
+      >
+        <ng-container *ngFor="let i of newProducts">
+          <nmt-product-item
+            [item]="i"
+            [routerLink]="[ROUTES_CONST.PRODUCT.ROOT, i.id]"
+          ></nmt-product-item>
+        </ng-container>
+      </div>
+    </ng-container>
   </section>
 </ng-template>
 <!-- END PRODUCT LIST -->
 
 <nmt-slide-over [(isVisible)]="showFilter">
-  <ng-container [ngTemplateOutlet]="filter"></ng-container>
+  <ng-container [ngTemplateOutlet]="filterTpl"></ng-container>
 </nmt-slide-over>
+
+<!-- SKELETON -->
+<ng-template #skeleton>
+  <nmt-skeleton></nmt-skeleton>
+</ng-template>

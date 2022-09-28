@@ -66,31 +66,11 @@ export class BlogComponent implements OnInit {
     },
   ]);
 
-  categories$ = of([
-    {
-      name: 'Tất cả',
-      quantity: 20,
-    },
-    {
-      name: 'Thẩm mỹ mũi',
-      quantity: 5,
-    },
-    {
-      name: 'Thẩm mỹ ngực',
-      quantity: 1,
-    },
-    {
-      name: 'Căng da mặt',
-      quantity: 7,
-    },
-    {
-      name: 'Massage',
-      quantity: 2,
-    },
-    {
-      name: 'Dịch vụ khác',
-      quantity: 3,
-    },
+  archives$ = of([
+    new Date('08/06/2022').getTime(),
+    new Date('07/06/2022').getTime(),
+    new Date('05/06/2022').getTime(),
+    new Date('010/12/2021').getTime(),
   ]);
   constructor() {}
 

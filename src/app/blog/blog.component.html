@@ -66,13 +66,12 @@
   </div>
 
   <div class="pb-6 mb-8">
-    <h2 class="text-3xl font-bold font-serif mb-5">Bài Đăng Gần Đây</h2>
+    <h2 class="text-3xl font-bold font-serif mb-5">Archives</h2>
     <ul>
-      <ng-container *ngFor="let c of categories$ | async">
+      <ng-container *ngFor="let c of archives$ | async">
         <li class="py-1 cursor-pointer hover:font-semibold">
           <div class="flex justify-between text-base">
-            <span>{{ c.name }}</span>
-            <span>({{ c.quantity }})</span>
+            <span>{{ c | date: "MMMM yyyy" }}</span>
           </div>
         </li>
       </ng-container>
@@ -85,10 +84,13 @@
 <ng-template #posts>
   <section>
     <div
-      class="mt-6 mb-6 grid grid-cols-1 gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-x-8"
+      class="mb-6 grid grid-cols-1 gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-x-8"
     >
       <ng-container *ngFor="let i of posts$ | async">
-        <nmt-blog-item [item]="i"></nmt-blog-item>
+        <nmt-blog-item
+          [item]="i"
+          [routerLink]="[ROUTES_CONST.BLOG.ROOT, i.id]"
+        ></nmt-blog-item>
       </ng-container>
     </div>
   </section>
