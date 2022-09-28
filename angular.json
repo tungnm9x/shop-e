@@ -28,8 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/styles/index.scss"
+              "src/styles.scss"
             ],
             "scripts": [
               "./node_modules/tw-elements/dist/js/index.min.js"

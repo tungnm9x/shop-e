@@ -10,7 +10,6 @@ export interface HeaderItem {
 @Component({
   selector: 'nmt-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   ROUTES_CONST = ROUTES_CONST;
@@ -32,14 +31,14 @@ export class HeaderComponent implements OnInit {
       icon: './assets/icons/svgs/product.svg',
     },
     {
+      label: 'Kiến thức làm đẹp',
+      route: ROUTES_CONST.BLOG.ROOT,
+      icon: './assets/icons/svgs/knowledge.svg',
+    },
+    {
       label: 'Đặt lịch',
       route: ROUTES_CONST.BOOKING.ROOT,
       icon: './assets/icons/svgs/booking.svg',
-    },
-    {
-      label: 'Kiến thức làm đẹp',
-      route: ROUTES_CONST.ARTICE.ROOT,
-      icon: './assets/icons/svgs/knowledge.svg',
     },
   ];
 

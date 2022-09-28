@@ -30,21 +30,25 @@ export class HomeComponent implements OnInit {
 
   trendingServices$ = of([
     {
+      id: '1',
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2022/04/3in1b-08-scaled.jpg',
       name: 'Liệu trình Điều trị chuyên sâu 3IN1',
     },
     {
+      id: '1',
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2021/10/trimun-thaidoc-1-1-scaled.jpg',
       name: 'Dịch vụ thải độc da thảo dược',
     },
     {
+      id: '1',
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2021/10/jqjqjqjq-1-1-scaled.jpg',
       name: 'Liệu trình điều trị Mụn lưng – viêm nang lông với công nghệ IPL ',
     },
     {
+      id: '1',
       imageUrl:
         'https://gaspa.vn/wp-content/uploads/2021/11/hinh-bs-3-scaled.jpg',
       name: 'Liệu trình da nhiễm Corticoid ',
@@ -79,28 +83,28 @@ export class HomeComponent implements OnInit {
 
   popularPost$ = of([
     {
+      id: '1',
       imageUrl:
         'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2021/08/The-Best-eleifend-Anti-Aging-Skin-Care-Routine-By-Experts.jpg',
       name: 'Botox, Fillers & An Effective Anti-Aging Skincare Routine',
-      time: new Date('03/06/2022'),
+      createdAt: new Date('03/06/2022').getTime(),
+      createdBy: 'Admin',
     },
     {
+      id: '2',
       imageUrl:
         'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/03/Botox-Fillers-An-Effective-Anti-Aging-Skincare-Routine.jpg',
       name: 'Skin Care & Beauty Best-Vintage Bonorum Malorum',
-      time: new Date('03/07/2022'),
+      createdAt: new Date('03/07/2022').getTime(),
+      createdBy: 'Admin',
     },
     {
+      id: '3',
       imageUrl:
         'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2021/06/Skin-Care-Beauty-Best-Vintage-Bonorum-Malorum.jpg',
       name: 'Self Care & Wellness Ideas consequuntur magni dolores',
-      time: new Date('03/08/2022'),
-    },
-    {
-      imageUrl:
-        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2018/05/The-Ultimate-Guide-to-Aging-Skin-Ipsum-Pretium-Bouquet.jpg',
-      name: 'The Ultimate Guide To Aging Skin Ipsum Pretium Bouquet',
-      time: new Date('05/12/2022'),
+      createdAt: new Date('03/08/2022').getTime(),
+      createdBy: 'Admin',
     },
   ]);
 

@@ -1,8 +1,9 @@
 import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
-import { ROUTES_CONST } from '@core/const';
+import { RANGE_PRICE, ROUTES_CONST, SORT_PRODUCT } from '@core/const';
+import { ProductService } from '@core/services/product.service';
 import { Helper } from '@core/utils';
-import { of } from 'rxjs';
+import { BehaviorSubject, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'nmt-product',
@@ -11,96 +12,40 @@ import { of } from 'rxjs';
 })
 export class ProductComponent implements OnInit {
   ROUTES_CONST = ROUTES_CONST;
-
-  categories$ = of([
-    {
-      name: 'Accessories',
-      quantity: 5,
-    },
-    {
-      name: 'Clothing',
-      quantity: 1,
-    },
-    {
-      name: 'Decor',
-      quantity: 7,
-    },
-    {
-      name: 'HD Camera',
-      quantity: 10,
-    },
-    {
-      name: 'Hoodies',
-      quantity: 3,
-    },
-  ]);
-
-  minValue: number = 0;
-  maxValue: number = 3000000;
-
   options: Options = {
-    floor: 0,
-    ceil: 3000000,
+    floor: RANGE_PRICE[0],
+    ceil: RANGE_PRICE[1],
     step: 500000,
   };
-
-  sort = 1;
-  sorts = [
-    {
-      label: 'Default sorting',
-      value: 1,
-    },
-    {
-      label: 'Sort by latest',
-      value: 2,
-    },
-    {
-      label: 'Sort by price: low to high',
-      value: 3,
-    },
-    {
-      label: 'Sort by price: high to low',
-      value: 4,
-    },
-  ];
-
+  showFilter = false;
+  sorts = SORT_PRODUCT;
   pageIndex = 1;
   total = 5;
-  newProducts$ = of([
-    {
-      id: 1,
-      imageUrl:
-        'https://gaspa.vn/wp-content/uploads/2022/06/1707x1707-scaled.jpg',
-      name: 'Rose Sleeping Mask – 50g',
-      price: 388000,
-    },
-    {
-      id: 2,
-      imageUrl: 'https://gaspa.vn/wp-content/uploads/2022/06/KCN-scaled.jpeg',
-      name: 'Kem Chống Nắng Sunflower SPF 50+ PA++++ 30g',
-      price: 488000,
-    },
-    {
-      id: 3,
-      imageUrl:
-        'https://gaspa.vn/wp-content/uploads/2022/06/Collagen-mask-scaled.jpeg',
-      name: 'KEVA MASK Collagen – 25g',
-      price: 1110000,
-    },
-    {
-      id: 4,
-      imageUrl:
-        'https://gaspa.vn/wp-content/uploads/2022/06/Body-ngay-scaled.jpeg',
-      name: 'Kem Dưỡng Ngày Lotus Body Whitening – 150g',
-      price: 150000,
-    },
-  ]);
+  filter = {
+    categoryId: 0,
+    minValue: 0,
+    maxValue: 3000000,
+    sort: 1,
+  };
+  filter$ = new BehaviorSubject(this.filter);
+  categories$ = this.productService.getCategories();
+  newProducts$ = this.filter$.pipe(
+    switchMap((q) => this.productService.getList({ ...q })),
+    tap((_) => console.log('New list'))
+  );
 
-  showFilter = false;
-
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     Helper.scrollToTop();
+  }
+
+  chooseCategory(c: any) {
+    this.filter.categoryId = c.id;
+    this.reload();
+  }
+
+  reload() {
+    this.filter$.next({ ...this.filter });
   }
 }

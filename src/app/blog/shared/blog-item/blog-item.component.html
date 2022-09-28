@@ -1,0 +1,21 @@
+<div class="group cursor-pointer text-center bg-white">
+  <div
+    class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 group-hover:opacity-75 lg:aspect-none h-96"
+  >
+    <img
+      [src]="item.imageUrl"
+      alt="img"
+      class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+    />
+  </div>
+  <div [class.pt-4]="!customClass" [class]="customClass">
+    <div
+      class="text-3xl font-medium max-w-full whitespace-nowrap overflow-hidden text-ellipsis font-serif"
+    >
+      {{ item.name }}
+    </div>
+    <div class="mt-3 text-gray-400 text-base font-medium">
+      {{ item.createdAt | date: "MMM dd, yyyy" }} - By {{ item.createdBy }}
+    </div>
+  </div>
+</div>

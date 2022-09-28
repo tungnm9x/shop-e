@@ -22,20 +22,7 @@
           class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
         >
           <ng-container *ngFor="let i of trendingServices$ | async">
-            <div class="group cursor-pointer">
-              <div
-                class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 group-hover:opacity-75 lg:aspect-none h-96"
-              >
-                <img
-                  [src]="i.imageUrl"
-                  alt="img"
-                  class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                />
-              </div>
-              <div class="mt-5 text-base font-medium">
-                {{ i.name }}
-              </div>
-            </div>
+            <nmt-service-item [item]="i"></nmt-service-item>
           </ng-container>
         </div>
 
@@ -181,8 +168,8 @@
             alt="img"
           />
           <div>
-            <div class="mb-7 text-sm">MORE ABOUT</div>
-            <div class="text-3xl md:text-4xl lg:text-6xl mb-8">
+            <div class="mb-6 text-sm">MORE ABOUT</div>
+            <div class="text-4xl lg:text-6xl mb-8 font-serif">
               Just Find Skin Care That Works For You
             </div>
             <div class="mb-8 text-sm">
@@ -372,27 +359,10 @@
         </div>
 
         <div
-          class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
+          class="mt-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-10 gap-x-8"
         >
           <ng-container *ngFor="let i of popularPost$ | async">
-            <div class="group cursor-pointer text-center">
-              <div
-                class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 group-hover:opacity-75 lg:aspect-none h-96"
-              >
-                <img
-                  [src]="i.imageUrl"
-                  alt="img"
-                  class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                />
-              </div>
-              <div class="mt-5 text-gray-700 text-2xl font-medium">
-                {{ i.name }}
-              </div>
-              <div class="mt-5 text-gray-700 text-base font-medium">
-                {{ i.time | date: "MMM dd, yyyy" }} - By Admin
-              </div>
-              <div class="mt-5"></div>
-            </div>
+            <nmt-blog-item [item]="i"></nmt-blog-item>
           </ng-container>
         </div>
 
