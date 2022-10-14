@@ -15,10 +15,10 @@ export class ProductDetailComponent implements OnInit {
       id: 'desc',
       label: 'Mô tả',
     },
-    {
-      id: 'more-info',
-      label: 'Thông tin thêm',
-    },
+    // {
+    //   id: 'more-info',
+    //   label: 'Thông tin thêm',
+    // },
   ];
 
   detail$ = of({

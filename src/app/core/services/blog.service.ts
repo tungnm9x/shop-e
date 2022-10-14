@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpService } from '@core/common/http.service';
+import { API } from '@core/const';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class BlogService {
+export class BlogService { 
+  blogs$ = this.getList();
 
-  constructor() { }
+  constructor(private http: HttpService) {}
+
+  getList() {
+    return this.http.sendToServer('GET', API.BLOG.LIST);
+  }
 }

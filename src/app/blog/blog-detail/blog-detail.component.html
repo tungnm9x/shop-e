@@ -12,13 +12,13 @@
       alt="blog-img"
     />
   </div>
-  <div class="pt-[1024px]">
+  <div class="pt-[230px]">
     <div class="container mx-auto relative bg-white p-16 shadow-content mb-16">
       <ng-container *ngIf="detail$ | async as detail">
         <div class="mt-3 text-gray-400 text-base font-medium">POST FORMAT</div>
 
         <div class="mt-4 text-5xl font-medium max-w-full font-serif">
-          {{ detail.name }}
+          {{ detail.title }}
         </div>
         <div class="mt-3 text-gray-400 text-base font-medium mb-8">
           {{ detail.createdAt | date: "MMM dd, yyyy" }} - By

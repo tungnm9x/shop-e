@@ -1,0 +1,54 @@
+<div class="relative">
+  <img
+    height="680"
+    src="https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img.jpg"
+    class="w-full"
+    loading="lazy"
+    srcset="
+      https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img.jpg          1903w,
+      https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-300x107.jpg   300w,
+      https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-1024x366.jpg 1024w,
+      https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-768x274.jpg   768w,
+      https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-1536x549.jpg 1536w,
+      https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-600x214.jpg   600w
+    "
+    sizes="(max-width: 1903px) 100vw, 1903px"
+  />
+
+  <button
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer"
+    (click)="showVideo = true"
+  >
+    <svg
+      class="w-24 h-24 text-white"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="{1.5}"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
+      />
+    </svg>
+  </button>
+</div>
+
+<nmt-modal [(isVisible)]="showVideo" [showClose]="true">
+  <iframe
+    width="100%"
+    height="625"
+    src="https://www.youtube.com/embed/cusuRMCoSAw"
+    title="Gói dịch vụ massage"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</nmt-modal>

@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
       id: '1',
       imageUrl:
         'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2021/08/The-Best-eleifend-Anti-Aging-Skin-Care-Routine-By-Experts.jpg',
-      name: 'Botox, Fillers & An Effective Anti-Aging Skincare Routine',
+      title: 'Botox, Fillers & An Effective Anti-Aging Skincare Routine',
       createdAt: new Date('03/06/2022').getTime(),
       createdBy: 'Admin',
     },
@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
       id: '2',
       imageUrl:
         'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/03/Botox-Fillers-An-Effective-Anti-Aging-Skincare-Routine.jpg',
-      name: 'Skin Care & Beauty Best-Vintage Bonorum Malorum',
+      title: 'Skin Care & Beauty Best-Vintage Bonorum Malorum',
       createdAt: new Date('03/07/2022').getTime(),
       createdBy: 'Admin',
     },
@@ -102,13 +102,11 @@ export class HomeComponent implements OnInit {
       id: '3',
       imageUrl:
         'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2021/06/Skin-Care-Beauty-Best-Vintage-Bonorum-Malorum.jpg',
-      name: 'Self Care & Wellness Ideas consequuntur magni dolores',
+      title: 'Self Care & Wellness Ideas consequuntur magni dolores',
       createdAt: new Date('03/08/2022').getTime(),
       createdBy: 'Admin',
     },
   ]);
-
-  showVideo: boolean = false;
 
   constructor() {}
 

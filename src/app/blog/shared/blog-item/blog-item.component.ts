@@ -8,7 +8,7 @@ export class BlogItemComponent implements OnInit {
   @Input() item!: {
     id: number | string;
     imageUrl: string;
-    name: string;
+    title: string;
     createdAt: number;
     createdBy: string;
   };
