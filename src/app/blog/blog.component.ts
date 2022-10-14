@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ROUTES_CONST } from '@core/const';
+import { BlogService } from '@core/services/blog.service';
 import { Helper } from '@core/utils';
 import { of } from 'rxjs';
 
 @Component({
   selector: 'nmt-blog',
   templateUrl: './blog.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlogComponent implements OnInit {
   ROUTES_CONST = ROUTES_CONST;
@@ -31,40 +33,7 @@ export class BlogComponent implements OnInit {
     },
   ];
 
-  posts$ = of([
-    {
-      id: '1',
-      imageUrl:
-        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2021/08/The-Best-eleifend-Anti-Aging-Skin-Care-Routine-By-Experts.jpg',
-      name: 'Botox, Fillers & An Effective Anti-Aging Skincare Routine',
-      createdAt: new Date('03/06/2022').getTime(),
-      createdBy: 'Admin',
-    },
-    {
-      id: '2',
-      imageUrl:
-        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/03/Botox-Fillers-An-Effective-Anti-Aging-Skincare-Routine.jpg',
-      name: 'Skin Care & Beauty Best-Vintage Bonorum Malorum',
-      createdAt: new Date('03/07/2022').getTime(),
-      createdBy: 'Admin',
-    },
-    {
-      id: '3',
-      imageUrl:
-        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2021/06/Skin-Care-Beauty-Best-Vintage-Bonorum-Malorum.jpg',
-      name: 'Self Care & Wellness Ideas consequuntur magni dolores',
-      createdAt: new Date('03/08/2022').getTime(),
-      createdBy: 'Admin',
-    },
-    {
-      id: '4',
-      imageUrl:
-        'https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2018/05/The-Ultimate-Guide-to-Aging-Skin-Ipsum-Pretium-Bouquet.jpg',
-      name: 'The Ultimate Guide To Aging Skin Ipsum Pretium Bouquet',
-      createdAt: new Date('05/12/2022').getTime(),
-      createdBy: 'Admin',
-    },
-  ]);
+  posts$ = this.blogService.blogs$;
 
   archives$ = of([
     new Date('08/06/2022').getTime(),
@@ -72,7 +41,7 @@ export class BlogComponent implements OnInit {
     new Date('05/06/2022').getTime(),
     new Date('010/12/2021').getTime(),
   ]);
-  constructor() {}
+  constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
     Helper.scrollToTop();

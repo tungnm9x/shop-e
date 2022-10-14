@@ -1,8 +1,18 @@
 <nmt-carousel [items]="carouselItems"></nmt-carousel>
-<ng-container [ngTemplateOutlet]="intro1"></ng-container>
-<ng-container [ngTemplateOutlet]="intro"></ng-container>
+<section>
+  <div class="bg-white">
+    <div class="container mx-auto py-20 lg:py-32">
+      <nmt-home-highlight></nmt-home-highlight>
+    </div>
+  </div>
+</section>
+<div class="bg-secondary">
+  <div class="container mx-auto py-20 lg:py-28">
+    <nmt-home-salient-features></nmt-home-salient-features>
+  </div>
+</div>
 <ng-container [ngTemplateOutlet]="trendingServices"></ng-container>
-<ng-container [ngTemplateOutlet]="video"></ng-container>
+<nmt-home-video-highlight></nmt-home-video-highlight>
 <ng-container [ngTemplateOutlet]="newProducts"></ng-container>
 <ng-container [ngTemplateOutlet]="comments"></ng-container>
 <ng-container [ngTemplateOutlet]="popularPost"></ng-container>
@@ -57,271 +67,13 @@
   <section>
     <div class="bg-white">
       <div class="container mx-auto py-20 lg:py-28">
-        <div class="flex justify-center mb-12">
-          <h2 class="text-4xl tracking-tight font-bold font-serif">
-            Sản Phẩm Mới
-          </h2>
-        </div>
-        <div
-          class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
-        >
-          <ng-container *ngFor="let i of newProducts$ | async">
-            <nmt-product-item [item]="i"></nmt-product-item>
-          </ng-container>
-        </div>
-
-        <div class="flex justify-center mt-8">
-          <button
-            [routerLink]="[ROUTES_CONST.PRODUCT.ROOT]"
-            class="text-white px-10 py-3 hover:opacity-70 bg-primary"
-          >
-            XEM THÊM
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6 inline-block ml-2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-              />
-            </svg>
-          </button>
-        </div>
+        <nmt-home-new-products
+          [newProducts]="newProducts$ | async"
+        ></nmt-home-new-products>
       </div>
     </div>
   </section>
   <!-- END Products -->
-</ng-template>
-
-<ng-template #intro>
-  <section>
-    <div class="bg-secondary">
-      <div class="container mx-auto py-20 lg:py-28">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-6">
-          <div class="text-center">
-            <img
-              class="mx-auto mb-6"
-              src="./assets/icons/svgs/face.svg"
-              alt="img"
-            />
-            <div class="text-center text-2xl md:text-3xl mb-5 font-serif">
-              Anti-Aging Facial
-            </div>
-            <div class="text-sm">
-              Contrary to popular belief Lorem Ipsum or random text It has roots
-              in
-            </div>
-          </div>
-
-          <div class="text-center">
-            <img
-              class="mx-auto mb-6"
-              src="./assets/icons/svgs/hydra.svg"
-              alt="img"
-            />
-            <div class="text-center text-2xl md:text-3xl mb-5 font-serif">
-              Hydra Facial
-            </div>
-            <div class="text-sm">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry
-            </div>
-          </div>
-
-          <div class="text-center">
-            <img
-              class="mx-auto mb-6"
-              src="./assets/icons/svgs/skin.svg"
-              alt="img"
-            />
-            <div class="text-center text-2xl md:text-3xl mb-5 font-serif">
-              Skin Tightening
-            </div>
-            <div class="text-sm">
-              It is a long established fact reader will be distracted by the
-              readable
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</ng-template>
-
-<ng-template #intro1>
-  <section>
-    <div class="bg-white">
-      <div class="container mx-auto py-20 lg:py-32">
-        <div
-          class="grid grid-cols-1 lg:grid-cols-2 gap-y-10 gap-x-10 items-center"
-        >
-          <img
-            src="
-          https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/about-img.jpg"
-            alt="img"
-          />
-          <div>
-            <div class="mb-6 text-sm">MORE ABOUT</div>
-            <div class="text-4xl lg:text-6xl mb-8 font-serif">
-              Just Find Skin Care That Works For You
-            </div>
-            <div class="mb-8 text-sm">
-              There are many variations of passages of Lorem Ipsum avail the
-              majority have suffered alteration in some form by more humour or
-              ra mised even slightly believable.
-            </div>
-            <!--  -->
-            <div class="flex items-center text-sm mb-6">
-              <svg
-                class="min-w-max w-8 h-8 mr-3"
-                data-name="Layer 1"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 28 28"
-              >
-                <defs>
-                  <style>
-                    .cls-1 {
-                      fill: #75846e;
-                    }
-                    .cls-2 {
-                      fill: #fff;
-                    }
-                  </style>
-                </defs>
-                <circle class="cls-1" cx="14" cy="14" r="14"></circle>
-                <path
-                  class="cls-2"
-                  d="M8.65,15.51l4,4.75,8.65-9.76-.86-.76L12.72,18.5,9.53,14.76Z"
-                  transform="translate(-1 -1)"
-                ></path>
-              </svg>
-              <div>
-                There are many variations of passages of Lorem Ipsum available
-                but the words etc.
-              </div>
-            </div>
-            <!--  -->
-            <div class="flex items-center text-sm mb-6">
-              <svg
-                class="min-w-max w-8 h-8 mr-3"
-                data-name="Layer 1"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 28 28"
-              >
-                <defs>
-                  <style>
-                    .cls-1 {
-                      fill: #75846e;
-                    }
-                    .cls-2 {
-                      fill: #fff;
-                    }
-                  </style>
-                </defs>
-                <circle class="cls-1" cx="14" cy="14" r="14"></circle>
-                <path
-                  class="cls-2"
-                  d="M8.65,15.51l4,4.75,8.65-9.76-.86-.76L12.72,18.5,9.53,14.76Z"
-                  transform="translate(-1 -1)"
-                ></path>
-              </svg>
-              <div>
-                Contrary to popular belief, Lorem Ipsum is not simply has roots
-                in a piece of classical. Contrary to popular belief, Lorem Ipsum
-                is not simply has roots in a piece of classical.
-              </div>
-            </div>
-            <!--  -->
-            <div class="flex items-center text-sm mb-9">
-              <svg
-                class="min-w-max w-8 h-8 mr-3"
-                data-name="Layer 1"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 28 28"
-              >
-                <defs>
-                  <style>
-                    .cls-1 {
-                      fill: #75846e;
-                    }
-                    .cls-2 {
-                      fill: #fff;
-                    }
-                  </style>
-                </defs>
-                <circle class="cls-1" cx="14" cy="14" r="14"></circle>
-                <path
-                  class="cls-2"
-                  d="M8.65,15.51l4,4.75,8.65-9.76-.86-.76L12.72,18.5,9.53,14.76Z"
-                  transform="translate(-1 -1)"
-                ></path>
-              </svg>
-              <div>
-                Ut in dignissim diam. Curabitur lacinia est quis purus
-                Suspendisse mattis tempor.
-              </div>
-            </div>
-
-            <button class="text-white px-10 py-3 hover:opacity-70 bg-primary">
-              READ MORE
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</ng-template>
-
-<ng-template #video>
-  <div class="relative">
-    <img
-      height="680"
-      src="https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img.jpg"
-      class="w-full"
-      loading="lazy"
-      srcset="
-        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img.jpg          1903w,
-        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-300x107.jpg   300w,
-        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-1024x366.jpg 1024w,
-        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-768x274.jpg   768w,
-        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-1536x549.jpg 1536w,
-        https://demos.codezeel.com/wordpress/WP01/WP017/wp-content/uploads/2022/09/video-img-600x214.jpg   600w
-      "
-      sizes="(max-width: 1903px) 100vw, 1903px"
-    />
-
-    <button
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer"
-      (click)="showVideo = true"
-    >
-      <svg
-        class="w-24 h-24 text-white"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="{1.5}"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
-        />
-      </svg>
-    </button>
-  </div>
 </ng-template>
 
 <ng-template #comments>
@@ -390,15 +142,3 @@
     </div>
   </section>
 </ng-template>
-
-<nmt-modal [(isVisible)]="showVideo" [showClose]="true">
-  <iframe
-    width="100%"
-    height="625"
-    src="https://www.youtube.com/embed/cusuRMCoSAw"
-    title="Gói dịch vụ massage"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-  ></iframe>
-</nmt-modal>
