@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadBlogs } from './blog.actions';
+import { loadBlogs, loadBlogsFailure, loadBlogsSuccess } from './blog.actions';
 
 export interface Blog {
   id: number;
@@ -22,8 +22,21 @@ export const initBlogState: BlogState = {
 };
 
 export const blogReducer = createReducer(
-  // init state
+  // Init state
   initBlogState,
-  // load blogs
-  on(loadBlogs, (state, action) => ({ ...state, status: 'loading' }))
+  // Load blogs
+  on(loadBlogs, (state) => ({ ...state, status: 'loading' })),
+  // Load blogs success
+  on(loadBlogsSuccess, (state, { items }) => ({
+    ...state,
+    blogs: items,
+    status: 'success',
+    error: null
+  })),
+  // Load blog fail
+  on(loadBlogsFailure, (state, { error }) => ({
+    ...state,
+    error,
+    status: 'error',
+  }))
 );

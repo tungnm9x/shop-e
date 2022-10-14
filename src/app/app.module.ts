@@ -6,6 +6,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { EffectsModule } from '@ngrx/effects';
+import { BlogEffects } from './state/blogs/blog.effects';
+import { blogReducer } from './state/blogs/blog.reducer';
 
 const routes: Routes = [
   {
@@ -45,7 +48,8 @@ const routes: Routes = [
     CoreModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({ blog: blogReducer }),
+    EffectsModule.forRoot([BlogEffects])
   ],
   providers: [],
   bootstrap: [AppComponent],

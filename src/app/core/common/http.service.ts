@@ -14,7 +14,7 @@ export class HttpService {
     bd?: any,
     hd?: any,
     pr?: any
-  ): Observable<any> {
+  ): any {
     let url = environment.endPointREST + api;
     let ret: Observable<any> = of(null);
     let body = bd || {};

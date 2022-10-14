@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ROUTES_CONST } from '@core/const';
 import { BlogService } from '@core/services/blog.service';
 import { Helper } from '@core/utils';
+import { Store } from '@ngrx/store';
+import { selectAllBlogs } from 'app/state/blogs/blog.selectors';
 import { of } from 'rxjs';
 
 @Component({
@@ -33,7 +35,7 @@ export class BlogComponent implements OnInit {
     },
   ];
 
-  posts$ = this.blogService.blogs$;
+  allPosts$ = this.store.select(selectAllBlogs);
 
   archives$ = of([
     new Date('08/06/2022').getTime(),
@@ -41,7 +43,7 @@ export class BlogComponent implements OnInit {
     new Date('05/06/2022').getTime(),
     new Date('010/12/2021').getTime(),
   ]);
-  constructor(private blogService: BlogService) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     Helper.scrollToTop();
