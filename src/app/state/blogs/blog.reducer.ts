@@ -16,7 +16,7 @@ export interface BlogState {
 }
 
 export const initBlogState: BlogState = {
-  blogs: [],
+  blogs: null,
   error: null,
   status: 'pending',
 };
@@ -25,18 +25,18 @@ export const blogReducer = createReducer(
   // Init state
   initBlogState,
   // Load blogs
-  on(loadBlogs, (state) => ({ ...state, status: 'loading' })),
+  on(loadBlogs, (state) => ({ ...state, status: 'loading' as const })),
   // Load blogs success
   on(loadBlogsSuccess, (state, { items }) => ({
     ...state,
     blogs: items,
-    status: 'success',
+    status: 'success' as const,
     error: null
   })),
   // Load blog fail
   on(loadBlogsFailure, (state, { error }) => ({
     ...state,
     error,
-    status: 'error',
+    status: 'error' as const,
   }))
 );

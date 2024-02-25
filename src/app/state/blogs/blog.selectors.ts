@@ -1,16 +1,16 @@
 import { createSelector } from '@ngrx/store';
 import { AppState } from '../app.state';
 
-export const selectBlogs = (state: AppState) => state.blogs;
+export const selectBlogsFeature = (state: AppState) => state.blogs;
 export const selectAllBlogs = createSelector(
-  selectBlogs,
-  (state) => state.blogs
+  selectBlogsFeature,
+  (state) => state?.blogs
 );
 export const selectStatusBlogs = createSelector(
-  selectBlogs,
-  (state) => state.status
+  selectBlogsFeature,
+  (state) => state?.status
 );
 export const selectErrorBlogs = createSelector(
-  selectBlogs,
-  (state) => state.error
+  selectBlogsFeature,
+  (state) => state?.error
 );

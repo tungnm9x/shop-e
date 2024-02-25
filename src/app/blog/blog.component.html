@@ -86,12 +86,12 @@
     <div
       class="mb-6 grid grid-cols-1 gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-x-8"
     >
-      <ng-container *ngFor="let i of posts$ | async">
+      <!-- <ng-container *ngFor="let i of allPosts$ | async">
         <nmt-blog-item
           [item]="i"
           [routerLink]="[ROUTES_CONST.BLOG.ROOT, i.id]"
         ></nmt-blog-item>
-      </ng-container>
+      </ng-container> -->
     </div>
   </section>
 </ng-template>

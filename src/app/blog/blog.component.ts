@@ -35,7 +35,7 @@ export class BlogComponent implements OnInit {
     },
   ];
 
-  allPosts$ = this.store.select(selectAllBlogs);
+  // allPosts$ = this.store.select(selectAllBlogs);
 
   archives$ = of([
     new Date('08/06/2022').getTime(),
